@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url(/kai-pilger-Ef6iL87-vOA-unsplash.jpg);
+}
+
+.container {
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  margin: 470px auto 0;
+}
+
+.cube {
+  border-radius: 7px;
+  /*the children of the element will be positioned in the 3D-space. */
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  /*faces stay relative to the cubes position*/
+  position: relative;
+  /*call animation*/
+  animation: floatRotate 5s infinite linear;
+}
+.face {
+  display: grid;
+  gap: 1px;
+  /*3 columns, each has the width of 1 fraction*/
+  grid-template-columns: repeat(3, 1fr);
+  border: 6px solid black;
+  border-radius: 7px;
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+/*styling cell blocks in the rubiks cube
+ filling up gaps to mimick the look*/
+.face .cell {
+  border-radius: 7px;
+  box-shadow: 4px 3px black;
+  border: 2px solid black;
+}
+/*the faces rotate, then translate on z-axis(to the user)
+ to form 3d-cube perspective*/
+.top {
+  background: white;
+  transform: rotateX(90deg) translateZ(100px);
+}
+.bottom {
+  background: yellow;
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+.right {
+  background: red;
+  transform: rotateY(90deg) translateZ(100px);
+}
+.left {
+  background: orange;
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.front {
+  background: green;
+  transform: rotateX(0deg) translateZ(100px);
+}
+.back {
+  background: blue;
+  transform: rotateX(-180deg) translateZ(100px);
+}
+
+/*animation for the rubiks cube*/
+@keyframes floatRotate {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(380deg) rotateY(280deg);
+  }
+}
